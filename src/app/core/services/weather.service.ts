@@ -8,7 +8,7 @@ export class WeatherService {
 
     private _http = inject(HttpClient)
 
-    getCurrentLocation(cityName: string): Observable<any> {
-        return this._http.get(`${AppConstants.WeatherEndPoint}/current.json?key=${AppConstants.WeatherToken}&q=${cityName}&aqi=yes`)
+    getCurrentLocation(lat: number, lon: number): Observable<any> {
+        return this._http.get(`${AppConstants.WeatherEndPoint}?lat=${lat}&lon=${lon}&appid=${AppConstants.WeatherToken}&units=standard`)
     }
 }
