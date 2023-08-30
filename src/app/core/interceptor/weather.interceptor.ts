@@ -1,12 +1,7 @@
 import { Injectable } from '@angular/core';
-import {
-    HttpRequest,
-    HttpHandler,
-    HttpEvent,
-    HttpInterceptor
-} from '@angular/common/http';
+import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { AppConstants } from '../constants/app.-constants.class';
+import { AppConstants } from '@core/constants/app.-constants.class';
 
 @Injectable()
 export class WeatherInterceptor implements HttpInterceptor {
@@ -24,7 +19,7 @@ export class WeatherInterceptor implements HttpInterceptor {
         request = request.clone({
             headers: request.headers.set('Accept', 'application/json')
         });
-        return  next.handle(this.addAuthToken(request));
+        return next.handle(this.addAuthToken(request));
     }
 
     addAuthToken(request: HttpRequest<any>) {

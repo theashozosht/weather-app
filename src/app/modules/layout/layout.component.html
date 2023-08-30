@@ -1,0 +1,13 @@
+<mat-toolbar color="primary">
+  <span>Weather App</span>
+  <span class="example-spacer"></span>
+</mat-toolbar>
+<mat-grid-list cols="4" rowHeight="100px">
+  <mat-grid-tile
+      *ngFor="let tile of gridList"
+      [colspan]="tile.cols"
+      [rowspan]="tile.rows"
+      [style.background]="tile.color">
+    {{tile.text}}
+  </mat-grid-tile>
+</mat-grid-list>
