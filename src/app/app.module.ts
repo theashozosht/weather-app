@@ -8,14 +8,16 @@ import { Router } from "@angular/router";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { WeatherInterceptor } from "./core/interceptor/weather.interceptor";
 import { HttpClientModule } from '@angular/common/http';
+import { DashboardRoutingModule } from "./modules/dashboard-routing.module";
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    DashboardRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule
   ],

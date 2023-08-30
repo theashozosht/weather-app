@@ -1,7 +1,7 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs'
-import { AppConstants } from '../constants/app.-constants.class';
+import { AppConstants } from '@core/constants/app.-constants.class';
 
 @Injectable({ providedIn: 'root' })
 export class WeatherService {
