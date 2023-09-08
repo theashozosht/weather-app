@@ -16,16 +16,19 @@ export class WeatherInterceptor implements HttpInterceptor {
             });
         }
 
+
         request = request.clone({
-            headers: request.headers.set('Accept', 'application/json')
+            setHeaders: {
+                Accept: "application/json; charset=utf-8"
+            }
         });
-        return next.handle(this.addAuthToken(request));
+        return request.url.startsWith('https://api.api-ninjas.com/v1/') ? next.handle(this.addAuthToken(request)) : next.handle(request)
     }
 
     addAuthToken(request: HttpRequest<any>) {
         return request.clone({
             setHeaders: {
-                'Authorization': 'Bearer ' + AppConstants.WeatherToken
+                'X-Api-Key': AppConstants.CityToken,
             }
         })
     }

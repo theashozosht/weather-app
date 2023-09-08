@@ -1,13 +1,54 @@
-<mat-toolbar color="primary">
-  <span>Weather App</span>
-  <span class="example-spacer"></span>
-</mat-toolbar>
-<mat-grid-list cols="4" rowHeight="100px">
-  <mat-grid-tile
-      *ngFor="let tile of gridList"
-      [colspan]="tile.cols"
-      [rowspan]="tile.rows"
-      [style.background]="tile.color">
-    {{tile.text}}
-  </mat-grid-tile>
-</mat-grid-list>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <h3 class="text-center my-4">Search for Weather:</h3>
+      <form (ngSubmit)="sendToAPIXU(cityName.value)">
+        <div class="form-group">
+          <input
+            type="text"
+            class="form-control"
+            id="weatherLocation"
+            aria-describedby="weatherLocation"
+            placeholder="Please input a location"
+            [formControl]="cityName"
+          />
+        </div>
+        <div class="text-center">
+          <button type="submit" class="btn btn-success btn-md">
+            Search for the weather
+          </button>
+        </div>
+      </form>
+    </div>
+    <ng-container *ngFor="let weather of weatherArray">
+      <ng-container *ngIf="weather.cityName">
+        <h3 class="text-center my-4">Weather Details:</h3>
+        <div class="text-center">
+          Current weather coordinations:
+          <span>
+            {{ weather.coordinations?.lat }} - {{ weather.coordinations?.long }}
+          </span>
+        </div>
+        <div class="text-center">
+          Current weather conditions:
+          <span> {{ weather.cityName }} - {{ weather.country }} </span>
+        </div>
+        <p class="text-center">Weather Type : {{ weather.weatherDesc }}</p>
+        <div class="text-center">
+          <!-- <h4>Wind Details :</h4> -->
+          <p class="text-center">Wind speed : {{ weather.wind?.speed }}</p>
+          <p class="text-center">Wind degree : {{ weather.wind?.deg }}</p>
+          <p class="text-center" *ngIf="weather.wind?.gust">
+            Wind gust : {{ weather.wind?.gust }}
+          </p>
+        </div>
+        <p class="text-center">
+          Temperature in Degrees Celcius: {{ weather.temprature?.temp }}
+        </p>
+        <p class="text-center">
+          Feels like in Degrees Celcius: {{ weather.temprature?.feelsLike }}
+        </p>
+      </ng-container>
+    </ng-container>
+  </div>
+</div>

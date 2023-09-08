@@ -6,9 +6,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { Router } from "@angular/router";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { WeatherInterceptor } from "./core/interceptor/weather.interceptor";
 import { HttpClientModule } from '@angular/common/http';
 import { DashboardRoutingModule } from "./modules/dashboard-routing.module";
+import { WeatherInterceptor } from "@core/interceptor/weather.interceptor";
 
 @NgModule({
   declarations: [
